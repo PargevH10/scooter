@@ -428,4 +428,3 @@ Route::middleware(['auth:api', 'Is_Active'])->group(function () {
 
 
     Route::get("report/epos_sales", "ReportController@eposSales");
-    Route::post('/amazon/callback', 'AmazonController@callback');
