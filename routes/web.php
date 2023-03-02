@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GetOrderController;
+use App\Http\Controllers\WordpressController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,6 +17,8 @@ use Illuminate\Support\Facades\Storage;
  */
 
 //------------------------------------------------------------------\\
+Route::get('get-from-wordpress', "WordpressController@getFromSite");
+Route::get('get-order', "GetOrderController@getOrder");
 
 Route::post('/login', [
     'uses' => 'Auth\LoginController@login',
@@ -144,6 +148,8 @@ Route::group(['middleware' => ['auth', 'Is_Active']], function () {
     ]);
 
 });
+
+
 
 
 

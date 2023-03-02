@@ -56,8 +56,8 @@ class CreateProductsTable extends Migration {
             $table->boolean('order_code')->default(true);
             $table->float('stock_alert', 10, 0)->nullable()->default(0);
             $table->boolean('is_variant')->default(0);
-            $table->boolean('is_imei')->default(0);
-            $table->boolean('not_selling')->default(0);
+            // $table->boolean('is_imei')->default(0);
+            // $table->boolean('not_selling')->default(0);
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps(6);
             $table->softDeletes();
