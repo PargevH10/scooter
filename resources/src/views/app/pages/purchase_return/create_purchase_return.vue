@@ -267,7 +267,7 @@
       </b-form>
     </validation-observer>
 
-    
+
   </div>
 </template>
 
@@ -309,7 +309,7 @@ export default {
   },
 
   methods: {
-    
+
     //--- Submit Validate Create Return Purchase
     Submit_Return_Purchase() {
       this.$refs.create_Return.validate().then(success => {
@@ -324,7 +324,7 @@ export default {
         }
       });
     },
-   
+
     //---Validate State Fields
     getValidationState({ dirty, validated, valid = null }) {
       return dirty || validated ? valid : null;
@@ -535,7 +535,7 @@ export default {
           ) {
             count += 1;
           }
-         
+
         }
 
         if (count === 0) {

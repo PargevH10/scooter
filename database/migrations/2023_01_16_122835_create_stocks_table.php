@@ -29,6 +29,7 @@ class CreateStocksTable extends Migration
             $table->integer('returned')->default(0);
             $table->boolean('alerts')->default(1);
             $table->float('cost_price')->nullable();
+            $table->unique(['warehouse_id', 'product_id']);
             $table->timestamps();
         });
     }

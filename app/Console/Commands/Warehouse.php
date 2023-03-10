@@ -73,7 +73,7 @@ class Warehouse extends Command
                 $l->email = $location['EmailAddress'];
                 $l->save();
             }
-        } catch (Illuminate\Database\QueryException $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
 
         }
 

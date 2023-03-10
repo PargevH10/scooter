@@ -7,6 +7,9 @@ use App\Models\Product;
 use App\Models\ProductSupplier;
 use App\Models\ProductVariant;
 use Illuminate\Database\QueryException;
+use App\Models\Category;
+use App\Models\Stock;
+use Illuminate\Support\Facades\DB;
 
 class WordpressController extends Controller
 {
@@ -15,7 +18,7 @@ class WordpressController extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => 'https://www.doctorscooter.co.uk/wp-json/wc/v3/products?per_page=100&page=8&oauth_consumer_key=ck_7d343a1c14f2619c8fbd7f97b97588099dd02591&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1677756153&oauth_nonce=dkc002KkNtn&oauth_version=1.0&oauth_signature=RfDWEmWntea4sSLrVR5BXXe84BY%3D',
+            CURLOPT_URL => 'https://www.doctorscooter.co.uk/wp-json/wc/v3/products?per_page=100&page=8&oauth_consumer_key=ck_7d343a1c14f2619c8fbd7f97b97588099dd02591&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1678438849&oauth_nonce=MFyKWwx4Dh6&oauth_version=1.0&oauth_signature=ejxnoQ2OW01oBujr2odQ6TYxNfc%3D',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -30,6 +33,7 @@ class WordpressController extends Controller
         curl_close($curl);
         $products = json_decode($products, true);
 
+
         foreach ($products as $product) {
             if (Product::where('slug', Product::createSlug($product['name']))->count() > 0) {
                 continue;
@@ -43,7 +47,18 @@ class WordpressController extends Controller
             $p->cost = $product['price'];
             $p->price = $product['price'];
             $p->out_price = $product['price'];
-            // // $p->category_id = $product['CategoryID'];
+            $p->category_id = Category::where('name', $product['categories'][0]['name'])->count() > 0 ? Category::where('name', $product['categories'][0]['name'])->first()->id : null;
+            if (!Stock::where('product_id', $product['id'])->where('warehouse_id', 28491)->first()) {
+                Stock::create([
+                    'product_id' => $product['id'],
+                    'warehouse_id' => 28491,
+                    'rack_number' => 1,
+                    'quantity' => 5,
+                    'sold' => 0,
+                    'returned' => 0,
+                    'alerts' => 0
+                ]);
+            }
             // $p->Type_barcode = $product['Barcode'];
             // $p->tax_rate_id = $product['TaxRateID'];
             // $p->eat_out_tax_rate_id = $product['EatOutTaxRateID'];
@@ -85,6 +100,21 @@ class WordpressController extends Controller
             $v->name = $product['name'];
             $v->save();
         }
+
+        return 1;
+    }
+
+    public function handle(Request $request)
+    {
+        $string = json_encode($request->line_items);
+        $json = substr($string, 1, strlen($string) - 2);
+        $order = json_decode($json);
+        Stock::where('product_id', $order->product_id)
+            ->where('warehouse_id', 28491)
+            ->update([
+                'quantity' => DB::raw('quantity - ' . $order->quantity),
+            ]
+        );
 
         return 1;
     }

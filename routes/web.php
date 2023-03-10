@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Storage;
  */
 
 //------------------------------------------------------------------\\
+
+
 Route::get('get-from-wordpress', "WordpressController@getFromSite");
-Route::get('get-order', "GetOrderController@getOrder");
+Route::get('amazon-products/transfer', "AmazonController@transfer");
 
 Route::post('/login', [
     'uses' => 'Auth\LoginController@login',

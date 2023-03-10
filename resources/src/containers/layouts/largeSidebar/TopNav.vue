@@ -343,5 +343,9 @@ export default {
 };
 </script>
 
+<style scoped lang="scss">
+    .badge-primary {
+        background-color: #FF9800;
+    }
 
-
+</style>

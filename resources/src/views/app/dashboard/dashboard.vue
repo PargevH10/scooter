@@ -20,33 +20,35 @@
           </router-link>
         </b-col>
 
-<!--        <b-col lg="3" md="6" sm="12">-->
-<!--          <router-link tag="a" class to="/app/purchases/list">-->
-<!--            <b-card class="card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">-->
+        <b-col lg="3" md="6" sm="12">
+          <router-link tag="a" class to="/app/purchases/list">
+            <b-card class="card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
+              <i class="i-Full-Cart"></i>
 <!--              <i class="i-Add-Cart"></i>-->
-<!--              <div class="content">-->
-<!--                <p class="text-muted mt-2 mb-0">{{$t('Purchases')}}</p>-->
-<!--                <p-->
-<!--                  class="text-primary text-24 line-height-1 mb-2"-->
-<!--                >{{currentUser.currency}} {{report_today.today_purchases?report_today.today_purchases:0}}</p>-->
-<!--              </div>-->
-<!--            </b-card>-->
-<!--          </router-link>-->
-<!--        </b-col>-->
+              <div class="content">
+                <p class="text-muted mt-2 mb-0">Amazon</p>
+                <p
+                  class="text-primary text-24 line-height-1 mb-2"
+                >{{currentUser.currency}} {{report_today.today_purchases?report_today.today_purchases:0}}</p>
+              </div>
+            </b-card>
+          </router-link>
+        </b-col>
 
-<!--        <b-col lg="3" md="6" sm="12">-->
-<!--          <router-link tag="a" class to="/app/sale_return/list">-->
-<!--            <b-card class="card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">-->
+        <b-col lg="3" md="6" sm="12">
+          <router-link tag="a" class to="/app/sale_return/list">
+            <b-card class="card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
 <!--              <i class="i-Right-4"></i>-->
-<!--              <div class="content">-->
-<!--                <p class="text-muted mt-2 mb-0">{{$t('SalesReturn')}}</p>-->
-<!--                <p-->
-<!--                  class="text-primary text-24 line-height-1 mb-2"-->
-<!--                >{{currentUser.currency}} {{report_today.return_sales?report_today.return_sales:0}}</p>-->
-<!--              </div>-->
-<!--            </b-card>-->
-<!--          </router-link>-->
-<!--        </b-col>-->
+              <i class="i-Full-Cart"></i>
+              <div class="content">
+                <p class="text-muted mt-2 mb-0">Ebay and Web Site</p>
+                <p
+                  class="text-primary text-24 line-height-1 mb-2"
+                >{{currentUser.currency}} {{report_today.return_sales?report_today.return_sales:0}}</p>
+              </div>
+            </b-card>
+          </router-link>
+        </b-col>
 
 <!--        <b-col lg="3" md="6" sm="12">-->
 <!--          <router-link tag="a" class to="/app/purchase_return/list">-->
@@ -94,7 +96,7 @@
         <div class="col-md-8">
           <div class="card mb-30">
             <div class="card-body p-2">
-              <h5 class="card-title border-bottom p-3 mb-2">{{$t('StockAlert')}}</h5>
+              <h5 class="card-title border-bottom p-3 mb-2">Repair Status</h5>
 
               <vue-good-table
                 :columns="columns_stock"
@@ -519,13 +521,13 @@ export default {
                   show: false
                 },
                 axisLabel: {
-                  color: dark_heading,
+                  color: '#FF9800',
                   interval: 0,
                   rotate: 30
                 },
                 axisLine: {
                   show: true,
-                  color: dark_heading,
+                  color: "#FF9800",
 
                   lineStyle: {
                     color: dark_heading
@@ -538,12 +540,12 @@ export default {
                 type: "value",
 
                 axisLabel: {
-                  color: dark_heading
+                  color: '#FF9800'
                   // formatter: "${value}"
                 },
                 axisLine: {
                   show: false,
-                  color: dark_heading,
+                  color: '#FF9800',
 
                   lineStyle: {
                     color: dark_heading

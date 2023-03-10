@@ -57,10 +57,10 @@ class DatabaseBackUp extends Command
         foreach (glob(storage_path().'/app/public/backup/*') as $filename) {
 			$path = storage_path().'/app/public/backup/'.basename($filename);
             @unlink($path);
-        } 
+        }
 
         $db_pass=env('DB_PASSWORD');
-        $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".sql"; 
+        $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".sql";
         if($db_pass !='') {
             $command = "".env('DUMP_PATH')." --user=" . env('DB_USERNAME') . " --password='$db_pass'" ." --host=" . env('DB_HOST') . " " . env('DB_DATABASE') . "  > " . storage_path() . "/app/public/backup/" . $filename;
         }else{
