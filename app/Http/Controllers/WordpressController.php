@@ -8,7 +8,9 @@ use App\Models\ProductSupplier;
 use App\Models\ProductVariant;
 use Illuminate\Database\QueryException;
 use App\Models\Category;
+use App\Models\Sale;
 use App\Models\Stock;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class WordpressController extends Controller
@@ -115,6 +117,12 @@ class WordpressController extends Controller
                 'quantity' => DB::raw('quantity - ' . $order->quantity),
             ]
         );
+
+        Sale::create([
+            'warehouse_id' => 28491,
+            'date' => Carbon::now()->toDateTimeString(),
+            
+        ]);
 
         return 1;
     }

@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Storage;
 
 Route::get('get-from-wordpress', "WordpressController@getFromSite");
 Route::get('amazon-products/transfer', "AmazonController@transfer");
+Route::get('staff-roles-transfer', 'StaffTransferController@retrieveStaffRoles');
 
 Route::post('/login', [
     'uses' => 'Auth\LoginController@login',
