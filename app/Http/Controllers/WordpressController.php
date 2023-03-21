@@ -119,9 +119,14 @@ class WordpressController extends Controller
         );
 
         Sale::create([
-            'warehouse_id' => 28491,
-            'date' => Carbon::now()->toDateTimeString(),
-            
+            "date" => \Carbon\Carbon::now()->toDateString(),
+            "product_id" => $order->product_id,
+            "warehouse_id" => 28491,
+            "paid_amount" => $order->price,
+            "payment_statut" => $order->price,
+            "statut" => $order->price,
+            "tax_rate" => $order->total_tax,
+            "GrandTotal" => $order->total,
         ]);
 
         return 1;
