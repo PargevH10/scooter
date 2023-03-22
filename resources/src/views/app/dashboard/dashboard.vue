@@ -44,7 +44,7 @@
                 <p class="text-muted mt-2 mb-0">Ebay and Web Site</p>
                 <p
                   class="text-primary text-24 line-height-1 mb-2"
-                >{{currentUser.currency}} {{report_today_website.return_sales?report_today_website.return_sales:0}}</p>
+                >{{currentUser.currency}} {{report_today.today_sales?report_today.today_sales:0}}</p>
               </div>
             </b-card>
           </router-link>
@@ -388,10 +388,6 @@ export default {
           const responseData = response.data;
 
           this.report_today = response.data.report_dashboard.original.report;
-
-
-          this.report_today_website = response.data.website_sales.original.report;
-
 
           this.stock_alerts =
             response.data.report_dashboard.original.stock_alert;

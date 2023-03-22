@@ -490,7 +490,7 @@ var render = function render() {
     staticClass: "text-muted mt-2 mb-0"
   }, [_vm._v("Ebay and Web Site")]), _vm._v(" "), _c("p", {
     staticClass: "text-primary text-24 line-height-1 mb-2"
-  }, [_vm._v(_vm._s(_vm.currentUser.currency) + " " + _vm._s(_vm.report_today.return_sales ? _vm.report_today.return_sales : 0))])])])], 1)], 1)], 1), _vm._v(" "), _c("b-row", [_c("b-col", {
+  }, [_vm._v(_vm._s(_vm.currentUser.currency) + " " + _vm._s(_vm.report_today.today_sales ? _vm.report_today.today_sales : 0))])])])], 1)], 1)], 1), _vm._v(" "), _c("b-row", [_c("b-col", {
     attrs: {
       lg: "8",
       md: "12",
