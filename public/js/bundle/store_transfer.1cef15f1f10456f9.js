@@ -221,14 +221,19 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       }
       if (this.transfer.from_warehouse != "" && this.transfer.from_warehouse != null) {
         this.timer = setTimeout(function () {
+          console.log(_this4.products, 'this.products');
           var product_filter = _this4.products.filter(function (product) {
-            return product.code === _this4.search_input || product.barcode.includes(_this4.search_input);
+            product.code === _this4.search_input || product.name.toLowerCase().includes(_this4.search_input.toLowerCase());
           });
           if (product_filter.length === 1) {
             _this4.SearchProduct(product_filter[0]);
           } else {
             _this4.product_filter = _this4.products.filter(function (product) {
-              return product.name.toLowerCase().includes(_this4.search_input.toLowerCase()) || product.code.toLowerCase().includes(_this4.search_input.toLowerCase()) || product.barcode.toLowerCase().includes(_this4.search_input.toLowerCase());
+              return product.name.toLowerCase().includes(_this4.search_input.toLowerCase())
+              // product.code.toLowerCase().includes(this.search_input.toLowerCase()) ||
+              // product.barcode.toLowerCase().includes(this.search_input.toLowerCase())
+              // product.code.toLowerCase().includes(this.search_input.toLowerCase())
+              ;
             });
           }
         }, 800);

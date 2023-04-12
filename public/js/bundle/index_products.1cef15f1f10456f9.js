@@ -77,6 +77,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       }, {
         label: this.$t("Code"),
         field: "code",
+        html: true,
         tdClass: "text-left",
         thClass: "text-left"
       }, {

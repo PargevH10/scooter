@@ -69,11 +69,11 @@
                  <!-- Product -->
                 <b-col md="12" class="mb-5">
                   <h6>{{$t('ProductName')}}</h6>
-                 
+
                   <div id="autocomplete" class="autocomplete">
-                    <input 
+                    <input
                      :placeholder="$t('Scan_Search_Product_by_Code_Name')"
-                       @input='e => search_input = e.target.value' 
+                       @input='e => search_input = e.target.value'
                       @keyup="search(search_input)"
                       @focus="handleFocus"
                       @blur="handleBlur"
@@ -531,7 +531,7 @@ export default {
       this.focused = false
     },
 
-    
+
     //------------- Submit Validation Create Transfer
     Submit_Transfer() {
       this.$refs.Create_transfer.validate().then(success => {
@@ -610,8 +610,8 @@ export default {
             } else {
               this.details[i].quantity =1;
             }
-            
-          
+
+
           this.details[i].Unit_cost = this.detail.Unit_cost;
           this.details[i].tax_percent = this.detail.tax_percent;
           this.details[i].tax_method = this.detail.tax_method;
@@ -675,7 +675,7 @@ export default {
       return dirty || validated ? valid : null;
     },
 
-    
+
     // Search Products
     search(){
 
@@ -690,15 +690,22 @@ export default {
       }
       if (this.transfer.from_warehouse != "" &&  this.transfer.from_warehouse != null) {
         this.timer = setTimeout(() => {
-          const product_filter = this.products.filter(product => product.code === this.search_input || product.barcode.includes(this.search_input));
+            console.log(this.products, 'this.products')
+          const product_filter = this.products.filter(product => {
+
+              product.code === this.search_input || product.name.toLowerCase().includes(this.search_input.toLowerCase())
+          });
+
             if(product_filter.length === 1){
                 this.SearchProduct(product_filter[0])
             }else{
-                this.product_filter=  this.products.filter(product => {
+                this.product_filter =  this.products.filter(product => {
+
                   return (
-                    product.name.toLowerCase().includes(this.search_input.toLowerCase()) ||
-                    product.code.toLowerCase().includes(this.search_input.toLowerCase()) ||
-                    product.barcode.toLowerCase().includes(this.search_input.toLowerCase())
+                    product.name.toLowerCase().includes(this.search_input.toLowerCase())
+                    // product.code.toLowerCase().includes(this.search_input.toLowerCase()) ||
+                    // product.barcode.toLowerCase().includes(this.search_input.toLowerCase())
+                       // product.code.toLowerCase().includes(this.search_input.toLowerCase())
                     );
                 });
             }
@@ -713,7 +720,7 @@ export default {
 
     },
 
-       
+
 
     //-------------------- get Result Value Search Product
 

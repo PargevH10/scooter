@@ -4,6 +4,7 @@ use App\Http\Controllers\GetOrderController;
 use App\Http\Controllers\WordpressController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\AmazonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,15 @@ use Illuminate\Support\Facades\Storage;
 
 //------------------------------------------------------------------\\
 
+Route::get('/amazon/products', [AmazonController::class, 'getProductList']);
+
 
 Route::get('get-from-wordpress', "WordpressController@getFromSite");
 Route::get('amazon-products/transfer', "AmazonController@transfer");
 Route::get('staff-roles-transfer', 'StaffTransferController@retrieveStaffRoles');
 Route::get('import-sales', 'TransferSales@transfer');
+Route::get('get-customers', 'GetCustomersController@getCustommers');
+Route::get('get-suppliers', 'GetSuppliersController@getSuppliers');
 
 Route::post('/login', [
     'uses' => 'Auth\LoginController@login',

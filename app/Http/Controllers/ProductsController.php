@@ -19,6 +19,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use \Gumlet\ImageResize;
+use Picqer\Barcode\BarcodeGeneratorSVG;
 
 class ProductsController extends BaseController
 {
@@ -74,7 +75,8 @@ class ProductsController extends BaseController
 
         foreach ($products as $product) {
             $item['id'] = $product->id;
-            $item['code'] = $product->code;
+            preg_match('/<svg.*<\/svg>/s', $this->barCode($product->code), $matches);
+            $item['code'] = $matches[0] . "<p style='letter-spacing: 12px;'>$product->code</p>";
             $item['name'] = $product->name;
             $item['category'] = $product['category']->name ?? 'no category';
             $item['brand'] = $product['brand'] ? $product['brand']->name : 'N/D';
@@ -117,6 +119,16 @@ class ProductsController extends BaseController
             'totalRows' => $totalRows,
         ]);
     }
+    //----------------- convert to barcode -----------------\\
+    private function barCode($itemId)
+    {
+        $generator = new BarcodeGeneratorSVG();
+
+        $barcode = $generator->getBarcode($itemId, $generator::TYPE_CODE_128);
+
+        return $barcode;
+    }
+
 
     //-------------- Store new  Product  ---------------\\
 
