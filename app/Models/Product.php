@@ -38,7 +38,7 @@ class Product extends Model
         'TaxNet' => 'double',
     ];
 
-    public function createSlug($title){
+    public static function createSlug($title){
         if (Product::whereSlug($slug = Str::slug($title))->exists()) {
             $max = Product::where('name', $title)->count();
 
