@@ -111,7 +111,9 @@
               <tbody>
                 <tr v-for="PROD_W in product.CountQTY">
                   <td>{{PROD_W.mag}}</td>
-                  <td>{{formatNumber(PROD_W.qte ,2)}} {{product.unit}}</td>
+                  <td>{{formatNumber(PROD_W.qte ,2)}}
+<!--                      {{product.unit}}-->
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -130,7 +132,9 @@
                 <tr v-for="PROD_V in product.CountQTY_variants">
                   <td>{{PROD_V.mag}}</td>
                   <td>{{PROD_V.variant}}</td>
-                  <td>{{formatNumber(PROD_V.qte ,2)}} {{product.unit}}</td>
+                  <td>{{formatNumber(PROD_V.qte ,2)}}
+                      {{product.unit}}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -176,14 +180,11 @@ export default {
   },
 
   methods: {
-   
+
 
     //------------------------------Formetted Numbers -------------------------\\
     formatNumber(number, dec) {
-      const value = (typeof number === "string"
-        ? number
-        : number.toString()
-      ).split(".");
+      const value = (typeof number === "string" ? number : number == null ? '0' : number.toString()).split(".");
       if (dec <= 0) return value[0];
       let formated = value[1] || "";
       if (formated.length > dec)

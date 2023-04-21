@@ -64,21 +64,21 @@
 
 
 
-          <li
-            v-show="currentUserPermissions && (currentUserPermissions.includes('Quotations_view')
-                      || currentUserPermissions.includes('Quotations_add'))"
-            @mouseenter="toggleSubMenu"
-            class="nav-item"
-            :class="{ active: selectedParentMenu == 'quotations' }"
-            data-item="quotations"
-            :data-submenu="true"
-          >
-            <a class="nav-item-hold" href="#">
-              <i class="nav-icon i-Checkout-Basket"></i>
-              <span class="nav-text">{{$t('Quotations')}}</span>
-            </a>
-            <div class="triangle"></div>
-          </li>
+<!--          <li-->
+<!--            v-show="currentUserPermissions && (currentUserPermissions.includes('Quotations_view')-->
+<!--                      || currentUserPermissions.includes('Quotations_add'))"-->
+<!--            @mouseenter="toggleSubMenu"-->
+<!--            class="nav-item"-->
+<!--            :class="{ active: selectedParentMenu == 'quotations' }"-->
+<!--            data-item="quotations"-->
+<!--            :data-submenu="true"-->
+<!--          >-->
+<!--            <a class="nav-item-hold" href="#">-->
+<!--              <i class="nav-icon i-Checkout-Basket"></i>-->
+<!--              <span class="nav-text">{{$t('Quotations')}}</span>-->
+<!--            </a>-->
+<!--            <div class="triangle"></div>-->
+<!--          </li>-->
           <li
             v-show="currentUserPermissions && (currentUserPermissions.includes('Purchases_view')
                         || currentUserPermissions.includes('Purchases_add'))"
