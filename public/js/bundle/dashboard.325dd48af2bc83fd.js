@@ -176,17 +176,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     }
   }),
   methods: {
-    daySalesReport: function daySalesReport(day) {
-      axios.post("sales-report", {
-        days: day
-      }).then(function (response) {
-        console.log(response, 'ressss');
-      })["catch"](function (error) {
-        console.log(error, 'error');
-        // _this4.SubmitProcessing = false;
-        // _this4.makeToast("danger", _this4.$t("InvalidData"), _this4.$t("Failed"));
-      });
-    },
     //---------------------------------- Report Dashboard With Echart
     report_with_echart: function report_with_echart() {
       var _this = this;
@@ -438,28 +427,7 @@ var render = function render() {
     staticClass: "main-content"
   }, [_vm.loading ? _c("div", {
     staticClass: "loading_page spinner spinner-primary mr-3"
-  }) : !_vm.loading && _vm.currentUserPermissions && _vm.currentUserPermissions.includes("dashboard") ? _c("div", [_c("b-row", [_c("b-col", [_c("button", {
-    staticClass: "btn btn-outline-primary mb-3 mr-5",
-    on: {
-      click: function click($event) {
-        return _vm.daySalesReport(0);
-      }
-    }
-  }, [_vm._v("\n                    Today\n                ")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-outline-primary mb-3 mr-5",
-    on: {
-      click: function click($event) {
-        return _vm.daySalesReport(7);
-      }
-    }
-  }, [_vm._v("\n                    7 days\n                ")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-outline-primary mb-3 mr-5",
-    on: {
-      click: function click($event) {
-        return _vm.daySalesReport(30);
-      }
-    }
-  }, [_vm._v("\n                    30 days\n                ")])])], 1), _vm._v(" "), _c("b-row", [_c("b-col", {
+  }) : !_vm.loading && _vm.currentUserPermissions && _vm.currentUserPermissions.includes("dashboard") ? _c("div", [_c("b-row", [_c("b-col", {
     attrs: {
       lg: "3",
       md: "6",

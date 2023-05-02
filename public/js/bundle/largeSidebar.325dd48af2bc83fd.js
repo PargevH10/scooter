@@ -285,7 +285,11 @@ var render = function render() {
     staticClass: "flex-grow-1"
   }), _vm._v(" "), _c("div", {
     staticClass: "app-footer"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-md-9"
+  }, [_c("p", [_c("strong", [_vm._v(_vm._s(_vm.currentUser.footer))])])])]), _vm._v(" "), _c("div", {
     staticClass: "footer-bottom border-top pt-3 d-flex flex-column flex-sm-row align-items-center"
   }, [_c("div", {
     staticClass: "d-flex align-items-center"
@@ -305,15 +309,7 @@ var render = function render() {
     staticClass: "flex-grow-1"
   })])])])]);
 };
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-md-9"
-  })]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -439,6 +435,35 @@ var render = function render() {
   }), _vm._v(" "), _c("span", {
     staticClass: "nav-text"
   }, [_vm._v(_vm._s(_vm.$t("StockAdjustement")))])]), _vm._v(" "), _c("div", {
+    staticClass: "triangle"
+  })]), _vm._v(" "), _c("li", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.currentUserPermissions && (_vm.currentUserPermissions.includes("Quotations_view") || _vm.currentUserPermissions.includes("Quotations_add")),
+      expression: "currentUserPermissions && (currentUserPermissions.includes('Quotations_view')\n                      || currentUserPermissions.includes('Quotations_add'))"
+    }],
+    staticClass: "nav-item",
+    "class": {
+      active: _vm.selectedParentMenu == "quotations"
+    },
+    attrs: {
+      "data-item": "quotations",
+      "data-submenu": true
+    },
+    on: {
+      mouseenter: _vm.toggleSubMenu
+    }
+  }, [_c("a", {
+    staticClass: "nav-item-hold",
+    attrs: {
+      href: "#"
+    }
+  }, [_c("i", {
+    staticClass: "nav-icon i-Checkout-Basket"
+  }), _vm._v(" "), _c("span", {
+    staticClass: "nav-text"
+  }, [_vm._v(_vm._s(_vm.$t("Quotations")))])]), _vm._v(" "), _c("div", {
     staticClass: "triangle"
   })]), _vm._v(" "), _c("li", {
     directives: [{

@@ -29,7 +29,7 @@ Route::get('import-sales', 'TransferSales@transfer');
 Route::get('get-customers', 'GetCustomersController@getCustommers');
 Route::get('get-suppliers', 'GetSuppliersController@getSuppliers');
 
-Route::put('/epos_addproduct', 'EposController@create');
+Route::post('epos_addproduct', 'EposController@create');
 
 Route::post('/login', [
     'uses' => 'Auth\LoginController@login',
