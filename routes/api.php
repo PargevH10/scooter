@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('get-order', "WordpressController@handle");
+Route::get('/epos_addproduct', 'EposController@create');
 
 //--------------------------- Reset Password  ---------------------------
 

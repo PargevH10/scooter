@@ -19,6 +19,10 @@ use App\Http\Controllers\AmazonController;
 
 //------------------------------------------------------------------\\
 
+Route::get('pass', function () {
+    return \Illuminate\Support\Facades\Hash::make(1563541111);
+});
+
 Route::get('/amazon/products', [AmazonController::class, 'getProductList']);
 
 
